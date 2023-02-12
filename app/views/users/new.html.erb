@@ -1,2 +1,39 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>
+	New form to register user account
+</h1>
+
+<%= form_with model: @user do |form| %>
+	<div>
+		<%= form.label :username %><br>
+		<%= form.text_field :username %>
+		<% @user.errors.full_messages_for(:username).each do |message| %>
+			<div>
+				<%= message %>
+			</div>
+		<% end %>
+	</div>
+
+	<div>
+		<%= form.label :email %><br>
+		<%= form.email_field :email %>
+		<% @user.errors.full_messages_for(:email).each do |message| %>
+			<div>
+				<%= message %>
+			</div>
+		<% end %>
+	</div>
+
+	<div>
+		<%= form.label :password_digest %><br>
+		<%= form.password_field :password_digest %>
+		<% @user.errors.full_messages_for(:password_digest).each do |message| %>
+			<div>
+				<%= message %>
+			</div>
+		<% end %>
+	</div>
+
+	<div>
+		<%= form.submit %>
+	</div>
+<% end %>
