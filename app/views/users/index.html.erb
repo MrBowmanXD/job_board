@@ -4,6 +4,10 @@
 
 <div>
 	<% @users.each do |user| %>
-		<h2>Welcome <%= @user.username %></h2>
+		<h2>Welcome <%= user.username %></h2>
 	<% end %>
 </div>
+
+<% if session[:user_id] %>
+	<%= link_to "Sign out", session_path(session[:user_id]), method: 'delete' %>
+<% end %>

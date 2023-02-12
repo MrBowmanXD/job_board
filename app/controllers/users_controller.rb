@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logged_in?, only: [:show]
+
   def new
     @user = User.new
   end
@@ -8,6 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Well done, you were able to sign up"
+      session[:user_id] = @user.id
       redirect_to @user
     else
       flash.now[:alert] = "Ups, something went wrong in the account creation"
