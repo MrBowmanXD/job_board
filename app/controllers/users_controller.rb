@@ -31,4 +31,12 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password_digest)
   end
 
+  def logged_in?
+    if session[:user_id]
+      true
+    else
+      redirect_to root_path
+    end
+  end
+
 end

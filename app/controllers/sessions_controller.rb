@@ -18,13 +18,10 @@ class SessionsController < ApplicationController
       flash.now[:alert] = "Ups, something went wrong in the log in"
       render 'new', status: :unprocessable_entity
     end
-    else
-
-    end
   end
 
   def destroy
-    @user = session[:user_id]
-    session[:user_id] = nil
+    reset_session
+    redirect_to users_url
   end
 end
