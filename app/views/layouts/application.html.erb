@@ -21,7 +21,7 @@
   </body>
 
   <% if session[:user_id] %>
-    <%= link_to "Sign out", session_path(session[:user_id]), data: {
+    <%= link_to "Sign out", logout_path, data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %>

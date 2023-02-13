@@ -2,7 +2,7 @@
 	Login form
 </h1>
 
-<%= form_with model: @user do |form| %>
+<%= form_with scope: :post, url: login_path do |form| %>
 	<div>
 		<%= form.label :username %><br>
 		<%= form.text_field :username %>
@@ -34,6 +34,6 @@
 	</div>
 
 	<div>
-		<%= form.submit %>
+		<%= form.submit "Login" %>
 	</div>
 <% end %>
