@@ -11,5 +11,6 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe JobsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # Remember to add jobs helper someday
+  # pending "add some examples to (or delete) #{__FILE__}"
 end
