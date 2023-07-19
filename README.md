@@ -1,24 +1,11 @@
-# README
+# entry level tech jobs
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A job board for begginer developers, or other related tech jobs. (maybe just in portugal)
 
-Things you may want to cover:
+## ruby-version
 
-* Ruby version
+3.2.2
 
-* System dependencies
+## test-library
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+RSPEC
