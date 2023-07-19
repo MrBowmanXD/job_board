@@ -1,5 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
+<%= link_to "Sign in",  new_user_session_path %>
+
+<br>
+
 <h1>Jobs</h1>
 
 <div id="jobs">
@@ -12,3 +16,7 @@
 </div>
 
 <%= link_to "New job", new_job_path %>
+
+<br>
+
+<%= button_to "Sign out", destroy_user_session_path, method: :delete %>

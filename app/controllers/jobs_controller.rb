@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[new edit create update destroy]
 
   # GET /jobs or /jobs.json
   def index
@@ -23,6 +24,8 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
 
+    @job.user_id = current_user.id
+
     respond_to do |format|
       if @job.save
         format.html { redirect_to job_url(@job), notice: "Job was successfully created." }
@@ -37,7 +40,7 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1 or /jobs/1.json
   def update
     respond_to do |format|
-      if @job.update(job_params)
+      if @job.update(job_params) && @job.user_id == current_user.id
         format.html { redirect_to job_url(@job), notice: "Job was successfully updated." }
         format.json { render :show, status: :ok, location: @job }
       else
