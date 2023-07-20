@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :name, :role, presence: true
 
   has_many :jobs
+  has_many :applications
 end
