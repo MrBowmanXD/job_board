@@ -2,6 +2,8 @@ class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[new edit create update destroy]
 
+  before_action :limit_to_five_job_postings, only:%i[create new]
+
   # GET /jobs or /jobs.json
   def index
     @jobs = Job.all
@@ -13,15 +15,23 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
+
     @job = Job.new
   end
 
   # GET /jobs/1/edit
   def edit
+
+    if Job.where('user_id = ?', current_user.id).count > 5 || @job.user_id != current_user.id
+      @jobs = Job.all
+      return redirect_to '/', status: :unauthorized, notice: 'You are not authorize to post more than 5 job postings.'
+    end
+
   end
 
   # POST /jobs or /jobs.json
   def create
+
     @job = Job.new(job_params)
 
     @job.user_id = current_user.id
@@ -39,6 +49,12 @@ class JobsController < ApplicationController
 
   # PATCH/PUT /jobs/1 or /jobs/1.json
   def update
+
+    if Job.where('user_id = ?', current_user.id).count > 5 || @job.user_id != current_user.id
+      @jobs = Job.all
+      return redirect_to '/', status: :unauthorized, notice: 'You are not authorize to post more than 5 job postings.'
+    end
+
     respond_to do |format|
       if @job.update(job_params) && @job.user_id == current_user.id
         format.html { redirect_to job_url(@job), notice: "Job was successfully updated." }
@@ -52,6 +68,7 @@ class JobsController < ApplicationController
 
   # DELETE /jobs/1 or /jobs/1.json
   def destroy
+
     @job.destroy
 
     respond_to do |format|
@@ -69,5 +86,13 @@ class JobsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def job_params
       params.require(:job).permit(:title, :description, :company, :location, :application_date)
+    end
+
+    # Only allows access to people who don't have more than 5 job postings
+    def limit_to_five_job_postings
+      if Job.where('user_id = ?', current_user.id).count > 5
+        @jobs = Job.all
+        return redirect_to '/', status: :unauthorized, notice: 'You are not authorize to post more than 5 job postings.'
+      end
     end
 end

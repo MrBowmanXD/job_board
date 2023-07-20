@@ -15,10 +15,50 @@ RSpec.describe "Jobs", type: :request do
     sign_in user # Sign in the user using Devise test helper
   end
 
+
+
   describe "GET /index" do
     it "renders a successful response" do
       get jobs_path
       expect(response).to have_http_status(:success)
+    end
+
+    it "returns http success for a job seeker with less than five job postings" do
+      # Create four job postings for the user
+      4.times { |n| Job.create!(title: "Job #{n}", description: "Description", company: "Company", location: "Location", application_date: Date.today, user: user) }
+
+      # Sign in the job seeker
+      sign_in user
+
+      # Try to access the index page
+      get "/jobs"
+
+      # Expect the response to have http status success
+      expect(response).to have_http_status(:success)
+    end
+
+    it "returns http success for an anonymous user" do
+      # Try to access the index page without signing in
+      get jobs_path
+
+      # Expect the response to have http status success
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET #new" do
+    it "redirects to the home page with an unauthorized status for a job seeker with more than five job postings" do
+      # Sign in the job seeker
+      sign_in user
+
+      # Create six job postings for the user
+      6.times { |n| Job.create!(title: "Job #{n}", description: "Description", company: "Company", location: "Location", application_date: Date.today, user: user) }
+
+      # Try to access the new job page using a get request
+      get new_job_path
+
+      # Expect the response to redirect to the home page with an unauthorized status (302)
+      expect(response).to have_http_status(:unauthorized)
     end
   end
 
@@ -56,6 +96,24 @@ RSpec.describe "Jobs", type: :request do
       get edit_job_path(job)
       expect(response).to have_http_status(:success)
     end
+
+    it "redirects to the home page with an unauthorized status for a job seeker with more than five job postings" do
+      # Sign in the job seeker
+      sign_in user
+
+      # Create six job postings for the user
+      6.times { |n| Job.create!(title: "Job #{n}", description: "Description", company: "Company", location: "Location", application_date: Date.today, user: user) }
+
+      # Create a new job posting
+      job = Job.create(title: "Software Engineer", description: "Looking for a talented software engineer.", company: "Example Company", location: "New York", application_date: Date.today + 7, user: user)
+
+      # Try to access the edit job page using a get request
+      get edit_job_path(job)
+
+      # Expect the response to redirect to the home page with an unauthorized status (302)
+      expect(response).to have_http_status(:unauthorized)
+    end
+
   end
 
   describe "POST /create" do
@@ -89,6 +147,19 @@ RSpec.describe "Jobs", type: :request do
         puts job.errors.full_messages if job.errors.any?
       end
 
+      it "redirects to the home page with an unauthorized status for a job seeker with more than five job postings" do
+        # Sign in the job seeker
+        sign_in user
+
+        # Create six job postings for the user
+        6.times { |n| Job.create!(title: "Job #{n}", description: "Description", company: "Company", location: "Location", application_date: Date.today, user: user) }
+
+        # Try to create a new job posting using a post request
+        post jobs_path, params: { job: { title: "New Job", description: "Description", company: "Company", location: "Location", application_date: Date.today } }
+
+        # Expect the response to redirect to the home page with an unauthorized status (302)
+        expect(response).to have_http_status(:unauthorized)
+      end
       # ... Other tests ...
     end
 
@@ -111,6 +182,25 @@ RSpec.describe "Jobs", type: :request do
         expect(response).to have_http_status(302)
         expect(response).to redirect_to(new_user_session_path)
       end
+    end
+  end
+
+  describe "PATCH #update" do
+    it "redirects to the home page with an unauthorized status for a job seeker with more than five job postings" do
+      # Sign in the job seeker
+      sign_in user
+
+      # Create six job postings for the user
+      6.times { |n| Job.create!(title: "Job #{n}", description: "Description", company: "Company", location: "Location", application_date: Date.today, user: user) }
+
+      # Create a new job posting
+      job = Job.create(title: "Software Engineer", description: "Looking for a talented software engineer.", company: "Example Company", location: "New York", application_date: Date.today + 7, user: user)
+
+      # Try to update the job using a patch request
+      patch job_path(job), params: { job: { title: "Updated Job Title" } }
+
+      # Expect the response to redirect to the home page with an unauthorized status (302)
+      expect(response).to have_http_status(:unauthorized)
     end
   end
 
