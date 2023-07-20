@@ -9,3 +9,7 @@ A job board for begginer developers, or other related tech jobs. (maybe just in 
 ## test-library
 
 RSPEC
+
+## stylesheet
+
+Scss
