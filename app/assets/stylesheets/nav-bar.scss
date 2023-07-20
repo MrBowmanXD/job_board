@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  nav {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .logo a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+
+  .nav-links li {
+    margin-left: 20px;
+  }
+
+  .nav-links li:first-child {
+    margin-left: 0;
+  }
+
+  .nav-links a {
+    vertical-align: middle; /* Set the vertical alignment */
+    line-height: 1; /* Adjust the line height for precise vertical alignment */
+  }
+
+  .nav-links a,
+  .nav-btn {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover,
+  .nav-btn:hover {
+    background-color: #555;
+  }
+
+  /* Cool Stylized Button */
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #2980b9;
+  }
+
+  button:focus {
+    outline: none;
+  }
+
+  /* Additional styles for button */
+  /* Cool Blue Primary Button */
+    .button-primary {
+    background-color: #1abc9c; /* Cool blue color for primary button */
+  }
+
+  .button-secondary {
+    background-color: #e74c3c;
+  }
+
+  .button-info {
+    background-color: #f39c12;
+  }
+
+  .button-disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+  }
+
+  .nav-links form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .nav-links {
+      margin-top: 10px;
+      flex-direction: column;
+    }
+
+    .nav-links li {
+      margin-left: 0;
+      margin-bottom: 10px;
+    }
+  }

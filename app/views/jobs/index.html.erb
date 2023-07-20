@@ -1,14 +1,26 @@
-<p style="color: green"><%= notice %></p>
-
-<%= link_to "Sign in",  new_user_session_path %>
-
-<br>
-
 <h1>Jobs</h1>
 
 <div id="jobs">
   <% @jobs.each do |job| %>
-    <%= render job %>
+
+  <div class="card">
+    <h2 class="title">
+      <%= job.title %>
+    </h2>
+    <p class="description">
+      <%= job.description %>
+    </p>
+    <p class="details">
+      Company: <%= job.company %>
+    </p>
+    <p class="details">
+      Location: <%= job.location %>
+    </p>
+    <p class="details">
+      Application Date: <%= job.application_date %>
+    </p>
+  </div>
+
     <p>
       <%= link_to "Show this job", job %>
     </p>
@@ -16,7 +28,3 @@
 </div>
 
 <%= link_to "New job", new_job_path %>
-
-<br>
-
-<%= button_to "Sign out", destroy_user_session_path, method: :delete %>

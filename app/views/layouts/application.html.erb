@@ -12,6 +12,25 @@
 
   <body>
 
+    <nav>
+    <div class="container">
+      <div class="logo">
+        <a href="#">Job Board</a>
+      </div>
+      <ul class="nav-links">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Jobs", jobs_path %></li>
+        <li><%= link_to "Post a Job", new_job_path %></li>
+        <% if user_signed_in? %>
+          <li><%= button_to "Sign Out", destroy_user_session_path, class: 'nav-btn button-primary', method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+        <% end %>
+        <!-- Add more menu items as needed -->
+      </ul>
+    </div>
+  </nav>
+
     <p class="notice">
       <%= notice %>
     </p>

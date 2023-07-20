@@ -1,0 +1,32 @@
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    margin: 20px;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .description {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+  }
+
+  .details {
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
+  }
+
+  /* Additional styles for hover effect */
+  .card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+  }
