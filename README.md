@@ -13,7 +13,3 @@ RSPEC
 ## stylesheet
 
 Scss
-
-## CSS framework
-
-Tailwind css + Tailwind UI
