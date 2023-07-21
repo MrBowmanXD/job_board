@@ -1,17 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @job %>
+<h1 class="show-title">Single Job Post</h1>
 
+<div class="main-card-container">
+
+  <div class="main-card">
+    <h2 class="title"><%= @job.title %></h2>
+    <p class="description"><%= @job.description %></p>
+    <p class="company-location"><%= @job.company %> | <%= @job.location %></p>
+    <p class="application-date"><%= @job.application_date %></p>
+    <%= link_to "Edit this job", edit_job_path(@job), class: 'edit-job-link' %> | <%= link_to "Back to jobs", jobs_path, class: 'back-to-jobs-link' %>
+
+    <% if current_user.present? %>
+
+      <% if @job.user_id == current_user.id %>
+        <br>
+        <br>
+        <%= button_to "Destroy this job", @job, method: :delete %>
+      <% end %>
+
+    <% end %>
+
+  </div>
 <div>
-  <%= link_to "Edit this job", edit_job_path(@job) %>
-  |
-  <%= link_to "Back to jobs", jobs_path %>
-
-  <% if @job.user_id == current_user.id %>
-    <br>
-    <br>
-    <%= button_to "Destroy this job", @job, method: :delete %>
-  <% end %>
-
-
-</div>

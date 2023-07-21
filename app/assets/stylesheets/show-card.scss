@@ -1,0 +1,47 @@
+.show-title {
+    text-align: center;
+}
+
+.main-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .description {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+  }
+
+  .company-location, .application-date {
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
+  }
+
+  .job-link {
+    display: block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .job-link:hover {
+    text-decoration: underline;
+  }
