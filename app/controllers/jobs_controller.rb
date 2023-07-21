@@ -69,6 +69,11 @@ class JobsController < ApplicationController
   # DELETE /jobs/1 or /jobs/1.json
   def destroy
 
+    if @job.user_id != current_user.id
+      @jobs = Job.all
+      return redirect_to '/', status: :unauthorized, notice: 'You are not authorize to delete this post.'
+    end
+
     @job.destroy
 
     respond_to do |format|
