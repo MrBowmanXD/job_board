@@ -27,6 +27,11 @@
   <div class="main-card">
     <h2>Applications</h2>
     <% @job.applications.each do |application| %>
+
+      <h2>
+        Application <%= application.id %>
+      </h2>
+
       <p>
         <strong>applicant information:</strong>
         <%= application.applicant_information %>
