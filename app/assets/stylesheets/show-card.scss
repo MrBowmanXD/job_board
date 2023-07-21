@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .main-card {
@@ -15,6 +16,7 @@
     padding: 20px;
     width: 400px;
     text-align: center;
+    margin-bottom: 25px;
   }
 
   .title {
@@ -45,3 +47,49 @@
   .job-link:hover {
     text-decoration: underline;
   }
+
+  .delete-job {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Styles for the application form */
+.main-card form {
+  text-align: left;
+}
+
+.main-card form p {
+  margin-bottom: 10px;
+}
+
+.main-card form label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.main-card form textarea,
+.main-card form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  width: 300px;
+}
+
+.main-card form input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.main-card form input[type="submit"]:hover {
+  background-color: #0056b3;
+}

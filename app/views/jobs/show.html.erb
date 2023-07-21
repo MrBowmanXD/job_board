@@ -16,10 +16,68 @@
       <% if @job.user_id == current_user.id %>
         <br>
         <br>
-        <%= button_to "Destroy this job", @job, method: :delete %>
+        <div class="delete-job">
+          <%= button_to "Destroy this job", @job, method: :delete %>
+        </div>
       <% end %>
 
     <% end %>
-
   </div>
+
+  <div class="main-card">
+    <h2>Applications</h2>
+    <% @job.applications.each do |application| %>
+      <p>
+        <strong>applicant information:</strong>
+        <%= application.applicant_information %>
+      </p>
+
+      <p>
+        <strong>resume text:</strong>
+        <%= application.resume_text %>
+      </p>
+
+      <p>
+        <strong>cover letter:</strong>
+        <%= application.cover_letter %>
+      </p>
+
+      <p>
+        <strong>application status:</strong>
+        <%= application.application_status %>
+      </p>
+
+      <p>
+        <strong>submitted at:</strong>
+        <%= application.submitted_at %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="main-card">
+    <h2>Add a application:</h2>
+    <%= form_with model: [ @job, @job.applications.build ] do |form| %>
+      <p>
+        <%= form.label :applicant_information %><br>
+        <%= form.text_area :applicant_information %>
+      </p>
+      <p>
+        <%= form.label :resume_text %><br>
+        <%= form.text_area :resume_text %>
+      </p>
+      <p>
+        <%= form.label :cover_letter %><br>
+        <%= form.text_area :cover_letter %>
+      </p>
+      <p>
+        <%= form.label :application_status %><br>
+        <%= form.text_field :application_status %>
+      </p>
+      <p>
+        <%= form.submit %>
+      </p>
+    <% end %>
+  </div>
+
 <div>
+
