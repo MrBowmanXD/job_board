@@ -64,15 +64,15 @@
     <%= form_with model: [ @job, @job.applications.build ] do |form| %>
       <p>
         <%= form.label :applicant_information %><br>
-        <%= form.text_area :applicant_information %>
+        <%= form.rich_text_area :applicant_information %>
       </p>
       <p>
         <%= form.label :resume_text %><br>
-        <%= form.text_area :resume_text %>
+        <%= form.rich_text_area :resume_text %>
       </p>
       <p>
         <%= form.label :cover_letter %><br>
-        <%= form.text_area :cover_letter %>
+        <%= form.rich_text_area :cover_letter %>
       </p>
       <p>
         <%= form.label :application_status %><br>
