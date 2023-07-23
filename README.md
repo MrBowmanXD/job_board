@@ -13,3 +13,7 @@ RSPEC
 ## stylesheet
 
 Scss
+
+## Other gems used
+
+faker
