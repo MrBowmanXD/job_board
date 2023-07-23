@@ -1,13 +1,19 @@
 class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[new edit create update destroy]
-
   before_action :limit_to_five_job_postings, only:%i[create new]
 
   # GET /jobs or /jobs.json
   def index
     @jobs = Job.all
+    @jobs = @jobs.where("title LIKE ? OR description LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%") if params[:query].present?
   end
+
+  def search
+    @jobs = Job.where("title LIKE ? OR description LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+    render :index
+  end
+
 
   # GET /jobs/1 or /jobs/1.json
   def show

@@ -1,29 +1,40 @@
 <h1 class="main-title">Jobs</h1>
 
+<div class="search-container">
+  <%= form_tag(jobs_path, method: :get) do %>
+    <%= text_field_tag :query, params[:query], placeholder: "Enter keywords...", class: "search-input" %>
+    <%= submit_tag "Search", class: "search-submit" %>
+  <% end %>
+</div>
+
 <div id="jobs">
-  <% @jobs.each do |job| %>
 
-    <div class="card">
-      <h2 class="title">
-        <%= job.title %>
-      </h2>
-      <p class="description">
-        <%= job.description %>
-      </p>
-      <p class="details">
-        Company: <%= job.company %>
-      </p>
-      <p class="details">
-        Location: <%= job.location %>
-      </p>
-      <p class="details">
-        Application Date: <%= job.application_date %>
-      </p>
+  <% if @jobs %>
 
-      <p>
-        <%= link_to "Show this job", job %>
-      </p>
-    </div>
+    <% @jobs.each do |job| %>
+
+      <div class="card">
+        <h2 class="title">
+          <%= job.title %>
+        </h2>
+        <p class="description">
+          <%= job.description %>
+        </p>
+        <p class="details">
+          Company: <%= job.company %>
+        </p>
+        <p class="details">
+          Location: <%= job.location %>
+        </p>
+        <p class="details">
+          Application Date: <%= job.application_date %>
+        </p>
+
+        <p>
+          <%= link_to "Show this job", job %>
+        </p>
+      </div>
+    <% end %>
   <% end %>
 
 
