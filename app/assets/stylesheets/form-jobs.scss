@@ -1,0 +1,79 @@
+/* app/assets/stylesheets/application.css (or .scss) */
+/* If using SCSS, you may import your own stylesheets using @import */
+
+.container-form-jobs {
+  /* Styling for form container */
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Styling for error messages */
+  #error-message {
+    color: red;
+    margin-bottom: 15px;
+  }
+
+  #error-message ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  #error-message li {
+    margin-bottom: 5px;
+  }
+
+  /* Styling for form labels */
+  form label {
+    text-align: center;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  /* Styling for text fields and text areas */
+  form input[type="text"],
+  form textarea,
+  form input[type="date"] {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  /* Styling for rich text area (if you are using a rich text editor) */
+  form .trix-content {
+    width: 100%;
+    height: 200px; /* Set the desired height */
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  /* Styling for submit button */
+  .form-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  form input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+}

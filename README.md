@@ -8,7 +8,7 @@ A job board for begginer developers, or other related tech jobs. (maybe just in 
 
 ## test-library
 
-RSPEC
+rspec
 
 ## stylesheet
 
@@ -16,4 +16,4 @@ Scss
 
 ## Other gems used
 
-faker
+faker - to seed the data
