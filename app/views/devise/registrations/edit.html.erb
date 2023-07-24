@@ -10,7 +10,12 @@
 
   <div class="field">
     <%= f.label :role %><br />
-    <%= f.text_field :role %>
+    <div>
+      <%= f.radio_button :role, "job seeker" %>
+      <%= f.label :role_job_seeker, "job seeker" %>
+      <%= f.radio_button :role, "job poster" %>
+      <%= f.label :role_job_poster, "job poster" %>
+    </div>
   </div>
 
   <div class="field">
