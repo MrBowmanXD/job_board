@@ -18,7 +18,7 @@ class ApplicationsController < ApplicationController
 
   private
   def application_params
-    params.require(:application).permit(:applicant_information, :resume_text, :cover_letter, :application_status)
+    params.require(:application).permit(:applicant_information, :resume_text, :cover_letter)
   end
 
 end
