@@ -15,10 +15,27 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @job = Job.find(params[:job_id])
+    @application = Application.find(params[:id])
+      if @application.update_attribute(:application_status, application_status_param["application_status"])
+        redirect_to job_path(@job)
+      else
+        redirect_to job_path(@job), status: :unprocessable_entity, notice: 'Unable to update the application status.'
+      end
+  end
+
 
   private
   def application_params
     params.require(:application).permit(:applicant_information, :resume_text, :cover_letter)
+  end
+
+  def application_status_param
+    params.require(:application).permit(:application_status)
   end
 
 end

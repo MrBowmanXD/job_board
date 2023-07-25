@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root to: 'jobs#index'
   devise_for :users
   resources :jobs do
-    resources :applications
+    resources :applications do
+      member do 
+        patch 'application', to: 'applications#update'
+      end
+    end
   end
 end

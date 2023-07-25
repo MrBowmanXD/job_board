@@ -1,0 +1,36 @@
+.application-status-buttons {
+
+  & .form-container {
+  width: 500px; /* Adjust the width as per your requirements */
+  margin: 0 auto; /* Center the form horizontally on the page */
+}
+
+& form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .accept-button,
+  .decline-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  width: 150px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.accept-button {
+  background-color: #4CAF50;
+}
+
+.decline-button {
+  background-color: #f44336;
+}
+}
+

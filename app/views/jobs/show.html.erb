@@ -51,7 +51,14 @@
         <strong>application status:</strong>
         <%= application.application_status %>
       </p>
-
+      <% if current_user.present? %>
+        <% if @job.user_id == current_user.id %>
+          <div class="application-status-buttons form-container">
+            <%= button_to "Accept Application", job_application_path(@job, application), class: 'accept-button', method: :patch, params: { application: { application_status: 'Accepted' } } %>
+            <%= button_to "Decline Application", job_application_path(@job, application), class: 'decline-button', method: :patch, params: { application: { application_status: 'Declined'} } %>
+          </div>
+        <% end %>
+      <% end %>
       <p>
         <strong>submitted at:</strong>
         <%= application.submitted_at %>
