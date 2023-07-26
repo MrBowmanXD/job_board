@@ -22,6 +22,13 @@ class ApplicationsController < ApplicationController
     @job = Job.find(params[:job_id])
     @application = Application.find(params[:id])
       if @application.update_attribute(:application_status, application_status_param["application_status"])
+        if @application.application_status.present?
+          if @application.application_status == 'Accepted'
+            flash[:notice] = "You just accepted an application, congratulations."
+          else
+            flash[:alert] = "You just declined an application."
+          end
+        end
         redirect_to job_path(@job)
       else
         redirect_to job_path(@job), status: :unprocessable_entity, notice: 'Unable to update the application status.'
