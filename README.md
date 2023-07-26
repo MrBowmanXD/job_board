@@ -14,6 +14,10 @@ postgreSQL
 
 rspec
 
+## linter
+
+rubocop
+
 ## stylesheet
 
 Scss
