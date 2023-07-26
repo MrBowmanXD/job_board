@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_21_232228) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_26_142300) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -55,8 +58,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_232228) do
     t.text "cover_letter"
     t.string "application_status"
     t.date "submitted_at"
-    t.integer "user_id", null: false
-    t.integer "job_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "job_id", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["job_id"], name: "index_applications_on_job_id"
@@ -71,7 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_232228) do
     t.date "application_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 

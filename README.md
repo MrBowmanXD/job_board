@@ -6,6 +6,10 @@ A job board for begginer developers, or other related tech jobs. (maybe just in 
 
 3.2.2
 
+## Database
+
+postgreSQL
+
 ## test-library
 
 rspec
