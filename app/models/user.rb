@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   validates :name, :role, presence: true
 
-  has_many :jobs
-  has_many :applications
+  has_many :jobs, dependent: :destroy
+  has_many :applications, dependent: :destroy
 end

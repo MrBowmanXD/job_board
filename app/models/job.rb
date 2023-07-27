@@ -3,6 +3,6 @@ class Job < ApplicationRecord
 
   has_rich_text :description
 
-  has_many :applications
+  has_many :applications, dependent: :destroy
   belongs_to :user
 end

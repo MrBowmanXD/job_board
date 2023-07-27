@@ -35,6 +35,14 @@ class ApplicationsController < ApplicationController
       end
   end
 
+  def destroy
+    @application = Application.find(params[:application][:application_id])
+    if @application.destroy
+      flash[:alert] = "You deleted the job application successfully."
+    else
+      flash[:notice] = "You did not delete the job application."
+    end
+  end
 
   private
   def application_params
@@ -44,5 +52,4 @@ class ApplicationsController < ApplicationController
   def application_status_param
     params.require(:application).permit(:application_status)
   end
-
 end
