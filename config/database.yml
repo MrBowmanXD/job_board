@@ -13,6 +13,13 @@
 #    <<: *default
 #    database: db/development.sqlite3
 
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+
 development:
   adapter: postgresql
   encoding: unicode
@@ -31,9 +38,19 @@ test:
   password: <%= ENV['DATABASE_PASSWORD'] %>
 
 staging:
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
   url: <%= ENV['DATABASE_URL'] %>
 
 production:
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
   url: <%= ENV['DATABASE_URL'] %> 
 
 # Warning: The database defined as "test" will be erased and
