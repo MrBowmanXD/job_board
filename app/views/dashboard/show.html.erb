@@ -1,0 +1,94 @@
+<div class="center mg-top-20px">
+	<div class="main-card">
+		<h1>
+			Welcome <%= @user_profile.name %>
+		</h1>
+		<p>
+			Email: <%= @user_profile.email %>
+		</p>
+	</div>
+</div>
+
+
+
+<% @user_profile.jobs.each do |job| %>
+<h2 class="text-center">Jobs created:</h2>
+<div class="center mg-top-20px">
+	<div class="main-card">
+		<p>
+			<strong>Title:</strong>
+			<%= job.title %>
+		</p>
+		<p>
+			<strong>Description:</strong>
+			<%= job.description %>
+		</p>
+		<p>
+			<strong>Company:</strong>
+			<%= job.company %>
+		</p>
+		<p>
+			<strong>Location:</strong>
+			<%= job.location %>
+		</p>
+		<p>
+			<strong>Application date:</strong>
+			<%= job.application_date %>
+		</p>
+		<% if current_user.present? %>
+
+      <% if job.user_id == current_user.id %>
+        <br>
+        <br>
+        <div class="delete-job">
+          <%= button_to "Destroy this job", job, method: :delete %>
+        </div>
+      <% end %>
+
+    <% end %>
+	</div>
+</div>
+<% end %>
+
+<% @user_profile.applications.each do |application| %>
+<h2 class="text-center">Applications made:</h2>
+<div class="center mg-top-20px">
+	<div class="main-card">
+		<h3>
+			Job title => <%= Job.find(application.job_id).title %>
+		</h3>
+		<p>
+			<strong>Applicant Information:</strong>
+			<%= application.applicant_information %>
+		</p>
+		<p>
+			<strong>Resume Text:</strong>
+			<%= application.resume_text %>
+		</p>
+		<p>
+			<strong>Cover Letter:</strong>
+			<%= application.cover_letter %>
+		</p>
+		<p>
+			<strong>Application Status:</strong>
+			<%= application.application_status %>
+		</p>
+		<p>
+			<strong>Submitted At:</strong>
+			<%= application.submitted_at %>
+		</p>
+
+		<% if current_user.present? %>
+
+      <% if application.user_id == current_user.id %>
+        <br>
+        <br>
+        <div class="delete-job">
+          <%= button_to "Destroy this application", job_application_path(Job.find(application.job_id), application), method: :delete, params: { application: { application_id: application.id } } %>
+        </div>
+      <% end %>
+
+    <% end %>
+	</div>
+</div>
+<% end %>

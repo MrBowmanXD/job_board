@@ -3,6 +3,11 @@
 <div class="main-card-container">
 
   <div class="main-card">
+    <h3>Created by:</h3>
+        <p>
+          <% user = User.find(@job.user_id) %>
+          <%= link_to user.name, controller: 'dashboard', action: 'show', id: user.id %>
+        </p>
     <h2 class="title"><%= @job.title %></h2>
     <p class="description"><%= @job.description %></p>
     <p class="company-location"><%= @job.company %> | <%= @job.location %></p>
@@ -29,6 +34,12 @@
       <h4>
         Application <%= application.id %>
       </h4>
+
+      <h3>Created by:</h3>
+        <p>
+          <% user = User.find(application.user_id) %>
+          <%= link_to user.name, controller: 'dashboard', action: 'show', id: user.id %>
+        </p>
 
       <p>
         <strong>applicant information:</strong>
