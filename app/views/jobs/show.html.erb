@@ -76,7 +76,7 @@
   </div>
 
   <% if @job.present? && current_user.present? %>
-    <% if @job.id != current_user.id %>
+    <% if @job.id != current_user.id && current_user.role == 'job seeker'%>
       <div class="main-card">
         <h2>Add a application:</h2>
         <%= form_with model: [ @job, @job.applications.build ] do |form| %>
