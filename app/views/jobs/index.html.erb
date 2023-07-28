@@ -18,7 +18,7 @@
           <%= job.title %>
         </h2>
 
-        <h3>Created by:</h3>
+        <h4>Created by:</h4>
         <p>
           <% user = User.find(job.user_id) %>
           <%= link_to user.name, controller: 'dashboard', action: 'show', id: user.id %>
