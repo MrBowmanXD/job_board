@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'messages/index'
+  get 'messages/show'
+  get 'messages/edit'
   get 'dashboard/index', to: 'dashboard#index', as: 'dashboard'
   get 'dashboard/:id', to: 'dashboard#show', as: 'user_profile'
   get 'jobs/search', to: 'jobs#search', as: 'search_jobs'
