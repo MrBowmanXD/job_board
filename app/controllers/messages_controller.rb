@@ -14,16 +14,13 @@ class MessagesController < ApplicationController
   # Post message (post)
   def create
     if params[:message][:name] != current_user.name
-      @message = Message.new(message_params)
-      @dashboard = User.find(current_user.id)
-      @message.user_id = current_user.id
-      if @message.save
-        redirect_to dashboard_path(@dashboard), notice: "You were able to send a message"
-      else
-        redirect_to :root, alert:, status: unprocessable_entity
+      @user_id = User.where(name: params[:message][:name]).first.id
+      @message = Message.create(message_params) do |m|
+        m.user_id = current_user.id
       end
+      redirect_to dashboard_path(@user_id)
     else
-      redirect_to :root, alert: "You are not allowed to message yourself.", status: :unauthorized
+      redirect_to :root, alert: "You are not able to send a message to yourself.", status: :unauthorized
     end
   end
 

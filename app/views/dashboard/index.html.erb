@@ -120,7 +120,8 @@
 
     <% if current_user.present? %>
     <h2 class="text-center">Messages:</h2>
-		  <% @user_profile.messages.each do |message| %>
+		<% messages = Message.where(name: @user_profile.name) %>
+		 <% messages.each do |message| %>
         <div class="center mg-top-20px">
 				  <div class="main-card">
 					  <h3>Title: <%= message.title %></h3>
@@ -138,6 +139,27 @@
 				  </div>
 			  </div>
 		  <% end %>
-    </div>
-  <% end %>
-</div>
+  		<% end %>
+  		 <% if current_user.present? %>
+		<% messages = @user_profile.messages %>
+		 <% messages.each do |message| %>
+        <div class="center mg-top-20px">
+				  <div class="main-card">
+					  <h3>Title: <%= message.title %></h3>
+					  <p>
+						  <% user = User.find(message.user_id) %>
+						  <strong>By:</strong> <%= link_to user.name, controller: 'dashboard', action: 'show', id: user.id %>
+            </p>
+            <p>
+              <strong>To:</strong> <%= link_to message.name, controller: 'dashboard', action: 'show', id: User.where(name: message.name).first.id %>
+            </p>
+					  <p>
+						  <strong>Body:</strong>
+					    <%= message.body %>
+					  </p>
+				  </div>
+			  </div>
+		  <% end %>
+  		<% end %>
+	</div>
+

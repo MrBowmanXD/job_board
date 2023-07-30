@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col">
+
 <div class="center mg-top-20px">
 	<div class="main-card">
 		<h1>
@@ -92,3 +95,26 @@
 	</div>
 </div>
 <% end %>
+  </div>
+
+  <div class="col">
+    <div class="center mg-top-20px">
+    	<div class="center main-card">
+		<%= form_with url: messages_path, method: :post, model: @message do |form| %>
+          <div>
+            <%= form.label :name %><br>
+            <%= form.text_field :name %>
+          </div>
+          <div>
+            <%= form.label :title %><br>
+            <%= form.text_field :title %>
+          </div>
+          <div>
+            <%= form.label :body %><br>
+            <%= form.text_area :body %>
+          </div>
+          <div><%= form.submit %></div>
+        <% end %>
+        </div>
+    </div>
+  </div>
