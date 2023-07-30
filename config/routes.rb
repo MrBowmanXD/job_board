@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'messages/index'
-  get 'messages/show'
-  get 'messages/edit'
+  resources :messages
   get 'dashboard/index', to: 'dashboard#index', as: 'dashboard'
   get 'dashboard/:id', to: 'dashboard#show', as: 'user_profile'
   get 'jobs/search', to: 'jobs#search', as: 'search_jobs'
@@ -9,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :jobs do
     resources :applications do
-      member do 
+      member do
         patch 'application', to: 'applications#update'
         delete 'delete', to: 'applications#destroy'
       end

@@ -3,6 +3,7 @@ class DashboardController < ApplicationController
 
   def index
     @user_profile = User.find(current_user.id)
+    @message = Message.new
   end
 
   def show
