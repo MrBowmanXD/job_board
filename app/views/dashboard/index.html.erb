@@ -119,8 +119,11 @@
     </div>
 
     <% if current_user.present? %>
-    <h2 class="text-center">Messages received:</h2>
+
 		<% messages = Message.where(name: @user_profile.name) %>
+		<% if messages.present? %>
+			<h2 class="text-center">Messages received:</h2>
+		<% end %>
 		 <% messages.each do |message| %>
         <div class="center mg-top-20px">
 				  <div class="main-card">
@@ -140,9 +143,11 @@
 			  </div>
 		  <% end %>
   		<% end %>
-  		 <% if current_user.present? %>
-		 <h2 class="text-center">Messages sent:</h2>
+  		 <% if current_user.present?  %>
 		<% messages = @user_profile.messages %>
+		<% if messages.present? %>
+			<h2 class="text-center">Messages sent:</h2>
+		<% end %>
 		 <% messages.each do |message| %>
         <div class="center mg-top-20px">
 				  <div class="main-card">
