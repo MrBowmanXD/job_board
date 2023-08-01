@@ -22,6 +22,10 @@ Bootstrap
 
 Scss
 
+## Pagination
+
+will-paginate
+
 ## Other gems used
 
 faker - to seed the data
