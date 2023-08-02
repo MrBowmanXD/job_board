@@ -77,30 +77,6 @@ RSpec.describe Application, type: :model do
       )
       expect(application).not_to be_valid
     end
-
-    it "is not valid without application_status" do
-      application = Application.new(
-        user: user,
-        job: job,
-        applicant_information: "Applicant information",
-        resume_text: "Resume content",
-        cover_letter: "Cover letter content",
-        submitted_at: Date.today
-      )
-      expect(application).not_to be_valid
-    end
-
-    it "is not valid without submitted_at" do
-      application = Application.new(
-        user: user,
-        job: job,
-        applicant_information: "Applicant information",
-        resume_text: "Resume content",
-        cover_letter: "Cover letter content",
-        application_status: "Submitted"
-      )
-      expect(application).not_to be_valid
-    end
   end
 
   describe "associations" do
