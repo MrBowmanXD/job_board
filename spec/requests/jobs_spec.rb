@@ -7,7 +7,7 @@ RSpec.describe "Jobs", type: :request do
       email: "john.doe@example.com",
       password: "password",
       password_confirmation: "password",
-      role: "job_seeker"
+      role: "job seeker"
     )
   end
 
@@ -93,6 +93,8 @@ RSpec.describe "Jobs", type: :request do
     end
 
     it "renders a successful response" do
+      sign_in user
+      user.role = 'job poster'
       get edit_job_path(job)
       expect(response).to have_http_status(:success)
     end
@@ -134,6 +136,7 @@ RSpec.describe "Jobs", type: :request do
       end
 
       it "creates a new Job with valid parameters" do
+        user.role = 'job poster'
         expect {
           post jobs_path, params: { job: valid_attributes }
         }.to change(Job, :count).by(1)
@@ -218,12 +221,16 @@ RSpec.describe "Jobs", type: :request do
     end
 
     it "destroys the requested job" do
+      sign_in user
+      user.role = 'job poster'
       expect {
         delete job_path(job)
       }.to change(Job, :count).by(-1)
     end
 
     it "redirects to the jobs list" do
+      sign_in user
+      user.role = 'job poster'
       delete job_path(job)
       expect(response).to redirect_to(jobs_path)
     end
