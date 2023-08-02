@@ -12,7 +12,7 @@ postgreSQL
 
 ## test-library
 
-rspec
+Minitest
 
 ## css framework
 
