@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: 'jobs#index'
   devise_for :users
   resources :jobs do
-    resources :applications do
+    resources :applications, only: [:create, :edit, :update, :destroy] do
       member do
         patch 'application', to: 'applications#update'
         delete 'delete', to: 'applications#destroy'
