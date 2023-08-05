@@ -1,15 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: %i[show edit]
-  before_action :authenticate_user!, only: %i[index show create edit update]
-
-  # Show a multitude of messages
-  def index
-    @messages = Message.where(user_id: params[:user_id])
-  end
-
-  # Show an individual message
-  def show
-  end
+  before_action :authenticate_user!, only: %i[create]
 
   # Post message (post)
   def create
@@ -28,19 +18,7 @@ class MessagesController < ApplicationController
     end
   end
 
-  # Get edition form (get)
-  def edit
-  end
-
-  # Update message (patch)
-  def update
-  end
-
   private
-  def set_message
-    @message = Message.find(params[:id])
-  end
-
   def message_params
     params.require(:message).permit(:name, :title, :body)
   end

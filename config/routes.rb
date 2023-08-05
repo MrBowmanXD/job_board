@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  get 'donate/payment'
   get 'pages/home'
   get 'pages/about'
   get 'pages/contact'
-  resources :messages
+  resources :messages, only: [:create]
   get 'dashboard/index', to: 'dashboard#index', as: 'dashboard'
   get 'dashboard/:id', to: 'dashboard#show', as: 'user_profile'
   get 'jobs/search', to: 'jobs#search', as: 'search_jobs'

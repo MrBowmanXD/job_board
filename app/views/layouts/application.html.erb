@@ -20,15 +20,16 @@
         <h2><%= link_to "Entry level Tech jobs", pages_home_path %></h2>
       </div>
       <ul class="nav-links">
-        <li><%= link_to "Dashboard", dashboard_path %></li>
-        <li><%= link_to "About", pages_about_path %></li>
-        <li><%= link_to "Contact", pages_contact_path %></li>
-        <li><%= link_to "Jobs", jobs_path %></li>
-        <li><%= link_to "Post a Job", new_job_path %></li>
+        <li class="center"><%= link_to "Dashboard", dashboard_path %></li>
+        <li class="center"><%= link_to "About", pages_about_path %></li>
+        <li class="center"><%= link_to "Contact", pages_contact_path %></li>
+        <li class="center"><%= link_to "Jobs", jobs_path %></li>
+        <li class="center"><%= link_to "Post a Job", new_job_path %></li>
+        <li ><button class="btn btn-success"><%= link_to "Donate", donate_payment_path, class: 'no-link' %></button></li>
         <% if user_signed_in? %>
           <li><%= button_to "Sign Out", destroy_user_session_path, class: 'nav-btn button-primary', method: :delete %></li>
         <% else %>
-          <li><%= link_to "Sign In", new_user_session_path %></li>
+          <li class="center"><%= link_to "Sign In", new_user_session_path %></li>
         <% end %>
         <!-- Add more menu items as needed -->
       </ul>
