@@ -17,10 +17,12 @@
     <nav>
     <div class="container">
       <div class="logo">
-        <a href="#">Entry level Tech jobs</a>
+        <h2><%= link_to "Entry level Tech jobs", pages_home_path %></h2>
       </div>
       <ul class="nav-links">
         <li><%= link_to "Dashboard", dashboard_path %></li>
+        <li><%= link_to "About", pages_about_path %></li>
+        <li><%= link_to "Contact", pages_contact_path %></li>
         <li><%= link_to "Jobs", jobs_path %></li>
         <li><%= link_to "Post a Job", new_job_path %></li>
         <% if user_signed_in? %>

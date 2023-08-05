@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'pages/home'
+  get 'pages/about'
+  get 'pages/contact'
   resources :messages
   get 'dashboard/index', to: 'dashboard#index', as: 'dashboard'
   get 'dashboard/:id', to: 'dashboard#show', as: 'user_profile'
   get 'jobs/search', to: 'jobs#search', as: 'search_jobs'
-  root to: 'jobs#index'
+  root to: 'pages#home'
   devise_for :users
   resources :jobs do
     resources :applications, only: [:create, :edit, :update, :destroy] do
