@@ -12,7 +12,10 @@
     <p class="description"><%= @job.description %></p>
     <p class="company-location"><%= @job.company %> | <%= @job.location %></p>
     <p class="application-date"><%= @job.application_date %></p>
-    <%= link_to "Edit this job", edit_job_path(@job), class: 'edit-job-link' %> | <%= link_to "Back to jobs", jobs_path, class: 'back-to-jobs-link' %>
+
+    <% if current_user.present? %>
+
+    <%= link_to "Edit this job", edit_job_path(@job), class: 'edit-job-link' %> |<% end %> <%= link_to "Back to jobs", jobs_path, class: 'back-to-jobs-link' %>
 
     <% if current_user.present? %>
 
