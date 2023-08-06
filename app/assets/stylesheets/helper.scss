@@ -23,3 +23,13 @@
 .no-link:hover {
 	background-color: #198754 !important;
 }
+
+.center-absolute {
+	text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateY(-50%);
+}
