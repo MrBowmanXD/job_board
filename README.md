@@ -29,3 +29,5 @@ will-paginate
 ## Other gems used
 
 faker - to seed the data
+
+httparty - to make api requests easier

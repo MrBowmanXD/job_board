@@ -7,6 +7,8 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.paginate(page: params[:page], per_page: 25)
     @jobs = @jobs.where("title LIKE ? OR description LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%") if params[:query].present?
+    response = HTTParty.get("https://api.itjobs.pt/job/list.json?api_key=#{ENV['IT_JOBS_API_KEY']}&limit=20", format: :plain)
+    @it_jobs = JSON.parse response, symbolize_names: true
   end
 
   # GET /jobs/1 or /jobs/1.json

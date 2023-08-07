@@ -50,3 +50,42 @@
 <div class="links-center">
   <%= link_to "New job", new_job_path %>
 </div>
+
+<h2 class="text-center">Jobs from IT Jobs</h2>
+<div id="jobs-not-center">
+
+  <%  @it_jobs[:results].each do |it_job| %>
+  <div class="card">
+    <h2 class="title">
+      <%= it_job[:title] %>
+    </h2>
+
+    <h4>Created by:</h4>
+    <p>
+      It Jobs
+    </p>
+
+    <p class="description">
+      <%= sanitize(it_job[:body]) %>
+    </p>
+    <p class="details">
+      Company: <%= it_job[:company][:name] %>
+    </p>
+    <p class="details">
+      <% if it_job[:locations].present? %>
+        <% it_job[:locations].each_with_index do |location, index| %>
+          Location:
+          <%= location[:name] %><br>
+        <% end %>
+      <% end %>
+    </p>
+    <p class="details">
+      Application Date: <%= it_job[:publishedAt] %>
+    </p>
+
+    <p>
+      <a href="https://www.itjobs.pt/">It Jobs</a>
+    </p>
+  </div>
+  <% end %>
+</div>
